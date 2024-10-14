@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assests/spotify-logo-png-7053.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Spotify Lite - Web Player: Music for Everyone</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- SideBar -->
+
+        <div class="Sidebar">
+            <div class="logo">
+                <img src="/assests/spotify-logo-png-7053.png" alt="logo">
+                <h2>Spotify Lite</h2>
+            </div>
+            <div class="navbar">
+                <a href="">Home</a>
+                <a href="">Search</a>
+                <a href="">Your Library</a>
+                <a href="">Favorite Songs</a>
+            </div>
+
+
+            <!-- Footer Section in sidebar -->
+
+            <footer>
+                <a href="">Legel</a>
+                <a href="">Safety & Privacy Center</a>
+                <a href="">Privacy Policy</a> <br><br>
+                <a href="">Cookies</a>
+                <a href="">About Ads</a>
+                <a href="">Accessibility</a>
+            </footer>
+        </div>
+
+
+        <!-- Main Music Player -->
+
+        <div class="music-player">
+
+            <div class="mini-logo">
+                <img src="/assests/spotify-logo-png-7053.png" alt="logo">
+                <h2>Spotify Lite</h2>
+            </div>
+
+            <div class="song-image">
+                <img src="/assests/title-images//tip tip barsa pani.jpg" alt="">
+            </div>
+
+            <div class="song-desc">
+                <h2 id="songTitle">Aayi nai</h2>
+                <p id="artistName">Mudassar Nazir</p>
+            </div>
+
+            <div class="progress">
+                <audio
+                    src="/assests/audio-songs/Aayi Nai Stree 2 320 Kbps.mp3"></audio>
+                <input type="range" id="progress" value="0" max="100">
+            </div>
+
+            <div class="controllers">
+                <button id="prevBtn" class="btn"><i class="fas fa-step-backward"></i></button>
+                <button id="playBtn" class="btn"><i class="fas fa-play"></i></button>
+                <button id="pauseBtn" class="btn" style="display: none;"><i class="fas fa-pause"></i></button>
+                <button id="nextBtn" class="btn"><i class="fas fa-step-forward"></i></button>
+
+                <div class="volume-control">
+                    <i class="fa-solid fa-volume-high"></i>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+                </div>
+            </div>
+
+            <div id="footer">
+            <p id="footer-link">&copy; 2024 Spotify Lite. Developed with 💝 by <a href="https://github.com/MudassarNazir956" target="_blank">Mudassar Nazir</a>. &nbsp;All rights reserved.</p>
+            </div>
+        </div>
+
+
+
+        <script src="/main.min.js"></script>
+</body>
+
+</html>
