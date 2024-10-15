@@ -1,14 +1,12 @@
-// Get the elements
-const audioPlayer = document.querySelector('audio'); // Target the audio element directly
+const audioPlayer = document.querySelector('audio');
 const playBtn = document.getElementById('playBtn');
 const pauseBtn = document.getElementById('pauseBtn');
-const progressBar = document.getElementById('progress'); // Ensure it matches your HTML ID
+const progressBar = document.getElementById('progress');
 const volumeSlider = document.getElementById('volumeSlider');
-const songImage = document.querySelector('.song-image img'); // Target song image
+const songImage = document.querySelector('.song-image img');
 const songTitle = document.getElementById('songTitle');
 const artistName = document.getElementById('artistName');
 
-// Song list with audio and image sources
 const songs = [
     {
         title: "Tip Tip Barsa Pani",
@@ -44,7 +42,6 @@ const songs = [
 
 let currentSongIndex = 0;
 
-// Load the current song
 function loadSong(songIndex) {
     const song = songs[songIndex];
     audioPlayer.src = song.audioSrc;
@@ -52,17 +49,14 @@ function loadSong(songIndex) {
     songTitle.textContent = song.title;
     artistName.textContent = song.artist;
 
-    // Debugging output
     console.log(`Loaded song: ${song.title}, Source: ${song.audioSrc}`);
 
-    // Check if the browser can play the audio type
     const canPlay = audioPlayer.canPlayType('audio/jpg');
     if (canPlay === '') {
         console.warn(`Browser cannot play this file type for ${song.title}`);
     }
 }
 
-// Play button
 playBtn.addEventListener('click', () => {
     audioPlayer.play()
         .then(() => {
@@ -73,16 +67,14 @@ playBtn.addEventListener('click', () => {
         .catch(err => console.error('Error playing the audio:', err));
 });
 
-// Pause button
 pauseBtn.addEventListener('click', () => {
     audioPlayer.pause();
     playBtn.style.display = 'block';
     pauseBtn.style.display = 'none';
 });
 
-// Next button
 document.getElementById('nextBtn').addEventListener('click', () => {
-    currentSongIndex = (currentSongIndex + 1) % songs.length; // Loop back to start if at the last song
+    currentSongIndex = (currentSongIndex + 1) % songs.length;
     loadSong(currentSongIndex);
     audioPlayer.play().then(() => {
         playBtn.style.display = 'none';
@@ -90,9 +82,8 @@ document.getElementById('nextBtn').addEventListener('click', () => {
     }).catch(err => console.error('Error playing the next song:', err));
 });
 
-// Previous button
 document.getElementById('prevBtn').addEventListener('click', () => {
-    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Loop back to end if at the first song
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
     loadSong(currentSongIndex);
     audioPlayer.play().then(() => {
         playBtn.style.display = 'none';
@@ -100,7 +91,6 @@ document.getElementById('prevBtn').addEventListener('click', () => {
     }).catch(err => console.error('Error playing the previous song:', err));
 });
 
-// Update progress bar
 audioPlayer.addEventListener('timeupdate', updateProgress);
 
 function updateProgress() {
@@ -110,21 +100,17 @@ function updateProgress() {
     }
 }
 
-// Allow user to change song position by dragging the progress bar
 progressBar.addEventListener('input', () => {
     const newTime = (progressBar.value / 100) * audioPlayer.duration;
     audioPlayer.currentTime = newTime;
 });
 
-// Volume control
 volumeSlider.addEventListener('input', () => {
     audioPlayer.volume = volumeSlider.value;
 });
 
-// Load the first song initially
 loadSong(currentSongIndex);
 
-// Event listener for when a song ends (auto-play next song)
 audioPlayer.addEventListener('ended', () => {
     currentSongIndex = (currentSongIndex + 1) % songs.length;
     loadSong(currentSongIndex);
@@ -134,10 +120,9 @@ audioPlayer.addEventListener('ended', () => {
     }).catch(err => console.error('Error playing the next song after the current one ended:', err));
 });
 
-// Spacebar toggle play/pause functionality
 document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
-        event.preventDefault(); // Prevent scrolling the page
+        event.preventDefault();
         if (audioPlayer.paused) {
             audioPlayer.play().then(() => {
                 playBtn.style.display = 'none';

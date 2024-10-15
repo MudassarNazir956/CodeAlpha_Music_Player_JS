@@ -77,7 +77,6 @@ footer a {
     color: white;
 }
 
-
 .music-player {
     background-color: #202020;
     margin: 8px;
@@ -163,7 +162,6 @@ footer a {
     text-decoration: underline;
     color: rgb(64, 217, 255);
 }
-
 
 
 @media only screen and (max-width: 768px) {
